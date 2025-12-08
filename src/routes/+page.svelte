@@ -1,21 +1,16 @@
 <script lang="ts">
-	import { sleep } from "$lib/utils";
-	import { getTest } from "./test.remote";
+	import { getTest1, getTest2 } from "./test.remote";
 
-  const testFunction = async () => {
-    await sleep(100);
-    return 'Hello, world!';
-  };
-
-  const test = $derived(await getTest());
-
+  const test = $derived(await getTest1());
 </script>
 
 {#if test}
-  <p>Test data loaded.</p>
-{:else}
-  {await testFunction()}
+  Testing
 {/if}
+{#if !test}
+  {await getTest2()}
+{/if}
+
 
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
