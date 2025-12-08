@@ -1,13 +1,11 @@
 <script lang="ts">
 	import { getTest1, getTest2 } from "./test.remote";
-
-  const test = $derived(await getTest1());
 </script>
 
-{#if test}
+{#if await getTest1()}
   Testing
 {/if}
-{#if !test}
+{#if !await getTest1()}
   {await getTest2()}
 {/if}
 
